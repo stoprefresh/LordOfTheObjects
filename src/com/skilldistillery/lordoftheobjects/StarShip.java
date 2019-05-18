@@ -7,18 +7,12 @@ public class StarShip {
 	private int totalRooms;
 	private double integrity;
 	private boolean terminalAvail;
-	private int difficutly;
 	
 	
 	
-	public 
 	
-	public int getDifficutly() {
-		return difficutly;
-	}
-	public void setDifficutly(int difficutly) {
-		this.difficutly = difficutly;
-	}
+	
+	
 	public int getExits() {
 		return exits;
 	}

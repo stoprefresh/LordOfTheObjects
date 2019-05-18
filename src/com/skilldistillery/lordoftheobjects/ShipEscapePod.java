@@ -1,5 +1,5 @@
 package com.skilldistillery.lordoftheobjects;
 
-public class ShipEscapePod {
+public class ShipEscapePod extends StarShip{
 
 }

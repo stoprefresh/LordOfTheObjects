@@ -1,5 +1,5 @@
 package com.skilldistillery.lordoftheobjects;
 
-public class ShipRoomHostile {
+public class ShipRoomHostile extends StarShip{
 
 }

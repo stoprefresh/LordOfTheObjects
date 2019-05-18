@@ -8,16 +8,6 @@ public class Player extends Character {
 	private boolean win;
 	
 	
-	@Override
-	public String toString() {
-		return "Player [shieldStr=" + shieldStr + ", score=" + score + ", win=" + win + ", health=" + health + ", name="
-				+ name + ", alive=" + alive + ", rangeWeapon=" + rangeWeapon + ", getShieldStr()=" + getShieldStr()
-				+ ", getScore()=" + getScore() + ", isWin()=" + isWin() + ", getHealth()=" + getHealth()
-				+ ", getName()=" + getName() + ", isAlive()=" + isAlive() + ", isRangeWeapon()=" + isRangeWeapon()
-				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
-				+ "]";
-	}
-
 
 
 	public Player(String name) {

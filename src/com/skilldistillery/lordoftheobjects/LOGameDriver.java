@@ -11,13 +11,14 @@ public class LOGameDriver {
 	
 	public void run() {
 		
-		ShipGame game = new ShipGame(false, true, 0);
+		ShipGame game = new ShipGame();
 		Scanner kb = new Scanner(System.in);
 		game.playerCreate(kb);
 		
 		
-		while(!game.isGameOver()) {
+		while(!game.getGameOver()) {
 			
+			game.generateRoom(game.getDifficutly());
 			
 			
 			
