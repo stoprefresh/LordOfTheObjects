@@ -4,10 +4,23 @@ public class Character {
 	protected int health;
 	protected String name;
 	protected boolean alive;
-	protected boolean rangeWeapon;
+	private int stance;
+//	protected Weapon weapon;
 	
 	
+
+	public Character() {
+		health = 100;
+		alive = true;
+		
+	}
+	public int getStance() {
+		return stance;
+	}
 	
+	public void setStance(int stance) {
+		this.stance = stance;
+	}
 	
 	public int getHealth() {
 		return health;
@@ -27,12 +40,7 @@ public class Character {
 	public void setAlive(boolean alive) {
 		this.alive = alive;
 	}
-	public boolean isRangeWeapon() {
-		return rangeWeapon;
-	}
-	public void setRangeWeapon(boolean rangeWeapon) {
-		this.rangeWeapon = rangeWeapon;
-	}
+	
 	
 //	public Character() {}
 	
