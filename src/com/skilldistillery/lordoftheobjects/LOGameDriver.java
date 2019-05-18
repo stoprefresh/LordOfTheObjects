@@ -10,9 +10,19 @@ public class LOGameDriver {
 	}
 	
 	public void run() {
-		ShipGame game = new ShipGame();
-//		Scanner kb = new Scanner(System.in);
-//		createPlayer(kb);
+		
+		ShipGame game = new ShipGame(false, true, 0);
+		Scanner kb = new Scanner(System.in);
+		game.playerCreate(kb);
+		
+		
+		while(!game.isGameOver()) {
+			
+			
+			
+			
+			
+		}
 	}
 	
 //	private void createPlayer(Scanner kb) {
