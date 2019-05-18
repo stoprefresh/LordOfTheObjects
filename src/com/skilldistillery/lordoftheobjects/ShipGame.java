@@ -8,13 +8,14 @@ public class ShipGame {
 	private boolean playerTurn;
 	private int turnCount;
 	private Player playerOne;
+	private ShipRoomHostile hostileRoom;
+	private ShipRoomSafe safeRoom;
+	private ShipEscapePod escapeRoom;
 	
-	
-	public ShipGame(boolean gameOver, boolean playerTurn, int turnCount) {
-		this.gameOver = false;
-		this.playerTurn = true;
-		this.turnCount = 0;
-		
+	public ShipGame() {
+		gameOver = false;
+		playerTurn = true;
+		turnCount = 0;
 	}
 	
 	public void playerCreate(Scanner input) {
@@ -27,10 +28,46 @@ public class ShipGame {
 		
 	}
 	
-
 	
 
-	public boolean isGameOver() {
+	public void generateRoom(int difficulty) {
+		double randomDiff = Math.random() * 100;
+		
+		switch(difficulty) {
+		
+		case 1:
+			if(randomDiff < 25) {
+				safeRoom = new ShipRoomSafe();
+			}
+			else {
+				hostileRoom = new ShipRoomHostile();
+			}
+			break;
+		case 2:
+			if (randomDiff < 20) {
+				safeRoom = new ShipRoomSafe();
+			}
+			else {
+				hostileRoom = new ShipRoomHostile();
+			}
+			break;
+		case 3:
+			if (randomDiff < 15) {
+				safeRoom = new ShipRoomSafe();
+			}
+			else {
+				hostileRoom = new ShipRoomHostile();
+			}
+			break;
+			default:
+				safeRoom = new ShipRoomSafe();
+		}
+	}
+	
+	
+	
+
+	public boolean getGameOver() {
 		return gameOver;
 	}
 	public void setGameOver(boolean gameOver) {
@@ -42,7 +79,7 @@ public class ShipGame {
 	public void setDifficutly(int difficutly) {
 		this.difficutly = difficutly;
 	}
-	public boolean isPlayerTurn() {
+	public boolean getPlayerTurn() {
 		return playerTurn;
 	}
 	public void setPlayerTurn(boolean playerTurn) {
