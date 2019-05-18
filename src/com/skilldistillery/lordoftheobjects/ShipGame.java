@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class ShipGame {
 	private boolean gameOver;
-	private int difficutly;
+	protected int difficutly;
 	private boolean playerTurn;
 	private int turnCount;
 	private Player playerOne;
@@ -37,30 +37,30 @@ public class ShipGame {
 		
 		case 1:
 			if(randomDiff < 25) {
-				safeRoom = new ShipRoomSafe();
+				safeRoom = new ShipRoomSafe(difficulty);
 			}
 			else {
-				hostileRoom = new ShipRoomHostile();
+				hostileRoom = new ShipRoomHostile(difficulty);
 			}
 			break;
 		case 2:
 			if (randomDiff < 20) {
-				safeRoom = new ShipRoomSafe();
+				safeRoom = new ShipRoomSafe(difficulty);
 			}
 			else {
-				hostileRoom = new ShipRoomHostile();
+				hostileRoom = new ShipRoomHostile(difficulty);
 			}
 			break;
 		case 3:
 			if (randomDiff < 15) {
-				safeRoom = new ShipRoomSafe();
+				safeRoom = new ShipRoomSafe(difficulty);
 			}
 			else {
-				hostileRoom = new ShipRoomHostile();
+				hostileRoom = new ShipRoomHostile(difficulty);
 			}
 			break;
 			default:
-				safeRoom = new ShipRoomSafe();
+				safeRoom = new ShipRoomSafe(difficulty);
 		}
 	}
 	

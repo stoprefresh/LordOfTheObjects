@@ -6,14 +6,14 @@ public class Player extends Character {
 	private double shieldStr;
 	private int score;
 	private boolean win;
-	
+	private boolean instantKill;
 	
 
 
 	public Player(String name) {
-		this.alive = true;
-		this.health = 100;
+		instantKill = true;
 		this.name = name;
+		shieldStr = 100;
 	}
 	
 	
