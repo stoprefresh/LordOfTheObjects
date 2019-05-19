@@ -5,6 +5,7 @@ public class ShipRoomHostile extends StarShip {
 	private HostileChar[] activeHostile;
 	private HostileChar newHostile;
 
+
 	public ShipRoomHostile(int difficulty) {
 
 		switch (difficulty) {
@@ -36,6 +37,21 @@ public class ShipRoomHostile extends StarShip {
 		default:
 		}
 
+	}
+	public HostileChar[] getActiveHostile() {
+		return activeHostile;
+	}
+	
+	public void setActiveHostile(HostileChar[] activeHostile) {
+		this.activeHostile = activeHostile;
+	}
+	
+	public HostileChar getNewHostile() {
+		return newHostile;
+	}
+	
+	public void setNewHostile(HostileChar newHostile) {
+		this.newHostile = newHostile;
 	}
 
 }

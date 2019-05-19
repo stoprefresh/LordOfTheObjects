@@ -6,11 +6,10 @@ public class HostileChar extends Character{
 	private String enemyIdent;
 	
 	
-
-
+	
 	public HostileChar(){
 		
-		name = "[Enemy:] ";
+		setName("[Enemy:]");
 		enemyType = (int)Math.random() * 2;
 		
 		switch(enemyType) {
@@ -25,19 +24,24 @@ public class HostileChar extends Character{
 			break;
 		default:
 		
-		}
-		
+		}	
 	}
+	
+	
+	
 	public void createHuman() {
 		enemyIdent = " - Humanoid";
-		name += "";
+		setName(getName() + " Space Pirate" + enemyIdent);
+		setOutputDamage(10);
+		setHitChance(.6);
 		
 		
 	}
 	public void createAlien() {
 		enemyIdent = " - Alien";
-		name += "Unkown";
-		
+		setName(getName() + " Unkown" + enemyIdent);
+		setOutputDamage(15);
+		setHitChance(.4);
 		
 	}
 	
