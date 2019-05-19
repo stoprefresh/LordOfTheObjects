@@ -10,8 +10,8 @@ public class ShipGame {
 	private int turnCount;
 	private Player playerOne;
 	private ShipRoomHostile hostileRoom;
-	private ShipRoomSafe safeRoom;
 	private ShipEscapePod escapeRoom;
+	private HostileChar enemyChar;
 
 	public ShipGame() {
 		gameOver = false;
@@ -26,8 +26,8 @@ public class ShipGame {
 
 		case 1:
 			if (randomDiff < 25) {
-				safeRoom = new ShipRoomSafe(difficulty);
-				safeRoom.setIsSafe(true);
+				hostileRoom = new ShipRoomHostile(difficulty);
+				hostileRoom.setIsSafe(true);
 			} else {
 				hostileRoom = new ShipRoomHostile(difficulty);
 			}
@@ -35,8 +35,8 @@ public class ShipGame {
 
 		case 2:
 			if (randomDiff < 20) {
-				safeRoom = new ShipRoomSafe(difficulty);
-				safeRoom.setIsSafe(true);
+				hostileRoom = new ShipRoomHostile(difficulty);
+				hostileRoom.setIsSafe(true);
 			} else {
 				hostileRoom = new ShipRoomHostile(difficulty);
 			}
@@ -44,39 +44,63 @@ public class ShipGame {
 
 		case 3:
 			if (randomDiff < 15) {
-				safeRoom = new ShipRoomSafe(difficulty);
-				safeRoom.setIsSafe(true);
+				hostileRoom = new ShipRoomHostile(difficulty);
+				hostileRoom.setIsSafe(true);
 			} else {
 				hostileRoom = new ShipRoomHostile(difficulty);
 			}
 			break;
 		default:
-			safeRoom = new ShipRoomSafe(difficulty);
-			safeRoom.setIsSafe(true);
+			hostileRoom = new ShipRoomHostile(difficulty);
+			hostileRoom.setIsSafe(true);
 		}
 	}
 
-	public void gameTurn(Scanner kb) {
+	public void gameTurn(Scanner kb, int count) {
 		turnCount = 0;
-		int totalHostiles = hostileRoom.getActiveHostile().length;
 		int playerChoice = 0;
+		int totalHostiles = hostileRoom.getActiveHostile().length;
 
-		while (totalHostiles > 0) {
+		if (playerOne.getScore() == 3) {
+			System.out.println("You win!");
+			gameOver = true;
+		}
+		if (count < totalHostiles) {
 			playerChoice = playerChoiceFight(totalHostiles, kb);
 			if (playerChoice == 1) {
-				if (characterHit(playerOne.getHitChance())) {
-					for (int i = 0; i < totalHostiles; i++) {
+				for (int i = 0 + count; i < totalHostiles; i++) {
+					if (characterHit(playerOne.getHitChance(), hostileRoom.getActiveHostile()[i].getName())) {
 						if (hostileRoom.getActiveHostile()[i] != null) {
+
+							if (characterHit(hostileRoom.getActiveHostile()[i].getHitChance(),
+							    playerOne.getName())) {
+								System.out.println();
+								System.out.println();
+								turnCount++;
+
+								if (playerOne.getShieldStr() <= 0) {
+									playerOne.setHealth(hostileRoom.getActiveHostile()[i].getOutputDamage());
+								} else {
+									playerOne.setShieldStr(hostileRoom.getActiveHostile()[i].getOutputDamage());
+								}
+							}
 							hostileRoom.getActiveHostile()[i] = null;
 							playerOne.setScore(1);
-							System.out.println("Enemy killed");
-							break;
+							System.out.println("**************");
+							System.out.println("*Enemy killed*");
+							System.out.println("**************");
+							
+							count++;
+							totalHostiles = totalHostiles - 1;
+							gameTurn(kb, count);
 						}
-					}
+
+					} 
 				}
+
 			}
 		}
-		while (playerChoice != 2 && safeRoom.getIsSafe() == true) {
+		while (playerChoice != 2 && hostileRoom.getIsSafe() == true) {
 			playerChoice = playerChoiceSafe(kb);
 			if (playerChoice == 1) {
 				System.out.println("Recharging shields");
@@ -84,16 +108,21 @@ public class ShipGame {
 				playerOne.setShieldStr(100);
 			}
 		}
+
 	}
 
-	public boolean characterHit(double hitChance) {
+	public boolean characterHit(double hitChance, String name) {
 
 		if (hitChance > (Math.random())) {
 			charHit = true;
-			System.out.println("Hit");
+			System.out.println();
+			System.out.println(name + " has been Hit");
+			System.out.println();
 		} else {
 			charHit = false;
-			System.out.println("Miss");
+			System.out.println();
+			System.out.println(name + " was Missed");
+			System.out.println();
 		}
 		return charHit;
 	}
@@ -101,6 +130,10 @@ public class ShipGame {
 	public int playerChoiceSafe(Scanner kb) {
 		System.out.println("The space is clear of hostiles.");
 		System.out.println();
+		System.out.println("Current Health: " + playerOne.getHealth());
+		System.out.println("Current Shield: " + playerOne.getShieldStr());
+		System.out.println("Current Score: " + playerOne.getScore());
+		System.out.println("---------------------------------");
 		System.out.println("What would you like to do?");
 		System.out.println("__________________________");
 		System.out.println("1.{Re-charge shields}");
@@ -112,15 +145,20 @@ public class ShipGame {
 	}
 
 	public int playerChoiceFight(int totalHostiles, Scanner kb) {
-
+		System.out.println();
 		System.out.println("There are currently " + totalHostiles + " hostiles in this room.");
 		System.out.println();
+		System.out.println("Current Health: " + playerOne.getHealth());
+		System.out.println("Current Shield: " + playerOne.getShieldStr());
+		System.out.println("Current Score: " + playerOne.getScore());
+		System.out.println("---------------------------------");
 		System.out.println("What would you like to do?");
 		System.out.println("__________________________");
 		System.out.println("1.{Attack}");
 		System.out.println("2.{Run}");
 		int choiceSelection = kb.nextInt();
-
+		System.out.println();
+		System.out.println();
 		return choiceSelection;
 	}
 
@@ -130,7 +168,7 @@ public class ShipGame {
 		playerOne = new Player(input.nextLine());
 		System.out.println("Please select a difficulty level(1-3): ");
 		difficutly = input.nextInt();
-		System.out.println(playerOne.toString());
+		System.out.println(playerOne.getName() + " be careful and attempt to exit the ship.");
 	}
 
 	public Player getPlayerOne() {
@@ -147,14 +185,6 @@ public class ShipGame {
 
 	public void setHostileRoom(ShipRoomHostile hostileRoom) {
 		this.hostileRoom = hostileRoom;
-	}
-
-	public ShipRoomSafe getSafeRoom() {
-		return safeRoom;
-	}
-
-	public void setSafeRoom(ShipRoomSafe safeRoom) {
-		this.safeRoom = safeRoom;
 	}
 
 	public ShipEscapePod getEscapeRoom() {
