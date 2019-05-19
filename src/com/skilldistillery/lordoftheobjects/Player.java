@@ -2,7 +2,7 @@ package com.skilldistillery.lordoftheobjects;
 
 public class Player extends Character {
 
-	
+	private boolean shieldActive;
 	private double shieldStr;
 	private int score;
 	private boolean win;
@@ -18,6 +18,7 @@ public class Player extends Character {
 		score = 0;
 		setHitChance(.75);
 	}
+	
 	
 	
 	public double getShieldStr() {

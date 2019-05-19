@@ -32,16 +32,16 @@ public class HostileChar extends Character{
 	public void createHuman() {
 		enemyIdent = " - Humanoid";
 		setName(getName() + " Space Pirate" + enemyIdent);
-		setOutputDamage(10);
-		setHitChance(.6);
+		setOutputDamage(50);
+		setHitChance(.95);
 		
 		
 	}
 	public void createAlien() {
 		enemyIdent = " - Alien";
 		setName(getName() + " Unkown" + enemyIdent);
-		setOutputDamage(15);
-		setHitChance(.4);
+		setOutputDamage(65);
+		setHitChance(.95);
 		
 	}
 	

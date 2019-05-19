@@ -5,7 +5,7 @@ public class Character {
 	private String name;
 	private boolean alive;
 	private int stance;
-	private double outputDamage;
+	private int outputDamage;
 	private double hitChance;
 //	protected Weapon weapon;
 	
@@ -20,11 +20,11 @@ public class Character {
 	
 	
 	
-	public double getOutputDamage() {
+	public int getOutputDamage() {
 		return outputDamage;
 	}
 
-	public void setOutputDamage(double outputDamage) {
+	public void setOutputDamage(int outputDamage) {
 		this.outputDamage = outputDamage;
 	}
 
@@ -48,7 +48,7 @@ public class Character {
 		return health;
 	}
 	public void setHealth(int health) {
-		this.health = health;
+		this.health = this.health - health;
 	}
 	public String getName() {
 		return name;
@@ -64,7 +64,7 @@ public class Character {
 	}
 	
 	
-//	public Character() {}
+
 	
 	
 	

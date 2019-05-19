@@ -19,7 +19,7 @@ public class LOGameDriver {
 		while(!game.getGameOver()) {
 			
 			game.generateRoom(game.getDifficutly());
-			game.gameTurn(kb);
+			game.gameTurn(kb, 0);
 			
 			
 			
