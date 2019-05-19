@@ -1,19 +1,41 @@
 package com.skilldistillery.lordoftheobjects;
 
 public class Character {
-	protected int health;
-	protected String name;
-	protected boolean alive;
+	private int health;
+	private String name;
+	private boolean alive;
 	private int stance;
+	private double outputDamage;
+	private double hitChance;
 //	protected Weapon weapon;
 	
 	
 
+	
 	public Character() {
 		health = 100;
 		alive = true;
 		
 	}
+	
+	
+	
+	public double getOutputDamage() {
+		return outputDamage;
+	}
+
+	public void setOutputDamage(double outputDamage) {
+		this.outputDamage = outputDamage;
+	}
+
+	public double getHitChance() {
+		return hitChance;
+	}
+
+	public void setHitChance(double hitChance) {
+		this.hitChance = hitChance;
+	}
+
 	public int getStance() {
 		return stance;
 	}

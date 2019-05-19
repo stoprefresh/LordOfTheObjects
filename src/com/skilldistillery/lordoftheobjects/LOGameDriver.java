@@ -19,11 +19,12 @@ public class LOGameDriver {
 		while(!game.getGameOver()) {
 			
 			game.generateRoom(game.getDifficutly());
-			
+			game.gameTurn(kb);
 			
 			
 			
 		}
+		kb.close();
 	}
 	
 //	private void createPlayer(Scanner kb) {

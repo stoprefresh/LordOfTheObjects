@@ -6,16 +6,18 @@ public class Player extends Character {
 	private double shieldStr;
 	private int score;
 	private boolean win;
-	private boolean instantKill;
+	
 	
 
 
 	public Player(String name) {
-		instantKill = true;
-		this.name = name;
+		
+		setName(name);
 		shieldStr = 100;
+		setOutputDamage(100);
+		score = 0;
+		setHitChance(.75);
 	}
-	
 	
 	
 	public double getShieldStr() {
@@ -27,8 +29,8 @@ public class Player extends Character {
 	public int getScore() {
 		return score;
 	}
-	public void setScore(int score) {
-		this.score = score;
+	public void setScore(int point) {
+		this.score += point;
 	}
 	public boolean isWin() {
 		return win;
