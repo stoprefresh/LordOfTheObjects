@@ -61,8 +61,8 @@ public class ShipGame {
 		int playerChoice = 0;
 		int totalHostiles = hostileRoom.getActiveHostile().length;
 
-		if (playerOne.getScore() == 3) {
-			System.out.println("You win!");
+		if (playerOne.getScore() == 6) {
+			printEndGameMessage();
 			gameOver = true;
 		}
 		if (count < totalHostiles) {
@@ -72,16 +72,16 @@ public class ShipGame {
 					if (characterHit(playerOne.getHitChance(), hostileRoom.getActiveHostile()[i].getName())) {
 						if (hostileRoom.getActiveHostile()[i] != null) {
 
-							if (characterHit(hostileRoom.getActiveHostile()[i].getHitChance(),
+							if (characterHit(.86,
 							    playerOne.getName())) {
 								System.out.println();
 								System.out.println();
 								turnCount++;
 
 								if (playerOne.getShieldStr() <= 0) {
-									playerOne.setHealth(hostileRoom.getActiveHostile()[i].getOutputDamage());
+									playerOne.setHealth(20);
 								} else {
-									playerOne.setShieldStr(hostileRoom.getActiveHostile()[i].getOutputDamage());
+									playerOne.setShieldStr(20);
 								}
 							}
 							hostileRoom.getActiveHostile()[i] = null;
@@ -106,9 +106,23 @@ public class ShipGame {
 				System.out.println("Recharging shields");
 				System.out.println("******************");
 				playerOne.setShieldStr(100);
+				System.out.println("******************");
 			}
 		}
 
+	}
+	
+	
+	
+	public void printEndGameMessage() {
+		System.out.println();
+		System.out.println();
+		System.out.println("You've saved the ship from being overrun.");
+		System.out.println();
+		System.out.println("Unfortunately you were the only survivor.");
+		System.out.println("With no hope for being saved, you pass out after watching");
+		System.out.println("the life support systems fail.");
+		System.out.println();
 	}
 
 	public boolean characterHit(double hitChance, String name) {
@@ -133,29 +147,33 @@ public class ShipGame {
 		System.out.println("Current Health: " + playerOne.getHealth());
 		System.out.println("Current Shield: " + playerOne.getShieldStr());
 		System.out.println("Current Score: " + playerOne.getScore());
-		System.out.println("---------------------------------");
-		System.out.println("What would you like to do?");
-		System.out.println("__________________________");
+		System.out.println("______________________________");
+		System.out.println("| What would you like to do? |");
+		System.out.println("______________________________");
 		System.out.println("1.{Re-charge shields}");
 		System.out.println("2.{Exit}");
-
 		int choiceSelection = kb.nextInt();
-
+		System.out.println("__________________________________________");
+		
 		return choiceSelection;
 	}
 
 	public int playerChoiceFight(int totalHostiles, Scanner kb) {
+		System.out.println("__________________________________________");
+		System.out.println("You have entered a new section of the ship");
+		System.out.println();
 		System.out.println();
 		System.out.println("There are currently " + totalHostiles + " hostiles in this room.");
 		System.out.println();
 		System.out.println("Current Health: " + playerOne.getHealth());
 		System.out.println("Current Shield: " + playerOne.getShieldStr());
 		System.out.println("Current Score: " + playerOne.getScore());
-		System.out.println("---------------------------------");
-		System.out.println("What would you like to do?");
-		System.out.println("__________________________");
-		System.out.println("1.{Attack}");
-		System.out.println("2.{Run}");
+		System.out.println("______________________________");
+		System.out.println("| What would you like to do? |");
+		System.out.println("______________________________");
+		System.out.println("         1.{Attack}");
+		System.out.println("         2.{Run}");
+		System.out.println("______________________________");
 		int choiceSelection = kb.nextInt();
 		System.out.println();
 		System.out.println();
@@ -163,12 +181,60 @@ public class ShipGame {
 	}
 
 	public void playerCreate(Scanner input) {
-		System.out.println("Welcome to the Game");
-		System.out.println("Please enter your name: ");
+		System.out.println("**************************************");
+		System.out.println("********* New message incoming *******");
+		System.out.println("********* * * * * * * * * * * ********");
+		System.out.println("**************************************");
+		System.out.println("********* * * * * * * * * * * ********");
+		System.out.println("**************************************");
+		System.out.println("********* * * * * * * * * * * ********");
+		System.out.println("**************************************");
+		System.out.println("********* * * * * * * * * * * ********");
+		System.out.println("**************************************");
+		System.out.println("******** You are the only one ********");
+		System.out.println("******** still picking up the ********");
+		System.out.println("******** communications.      ********");
+		System.out.println("**************************************");
+		System.out.println("******** Your ship has been   ********");
+		System.out.println("******** boarded by an unknown *******");
+		System.out.println("******** amount of hostiles.  ********");
+		System.out.println("**************************************");
+		System.out.println("**************************************");
+		System.out.println("********  Enter your name so  ********");
+		System.out.println("********  so our systems can  ********");
+		System.out.println("******** track you.....  ...  ********");
+		System.out.println("**************************************");
+		System.out.println("**************************************");
+		System.out.print("                ");
 		playerOne = new Player(input.nextLine());
-		System.out.println("Please select a difficulty level(1-3): ");
+		System.out.print("                ");
+		System.out.println();     
+		System.out.println("**************************************");
+		System.out.println("**************************************");
+		System.out.println("******    Thank you " + playerOne.getName() + "   *********");
+		System.out.println("**************************************");
+		System.out.println("**************************************");
+		System.out.println("**************************************");
+		System.out.println("Please enter a difficulty level(1-3): ");
 		difficutly = input.nextInt();
-		System.out.println(playerOne.getName() + " be careful and attempt to exit the ship.");
+		System.out.println();
+		System.out.println();
+		System.out.println("**************************************");
+		System.out.println("**************************************");
+		System.out.println("**** " + playerOne.getName() + " be careful and *****");
+		System.out.println("******* attempt to save the  *********");
+		System.out.println("********          ship........********");
+		System.out.println("**************************************");
+		System.out.println("****  There is an unknown number  ****");
+		System.out.println("**** of enemies that have boarded ****");
+		System.out.println("**** the ship...... .... .... ..******");
+		System.out.println("**************************************");
+		System.out.println("******  Do everything in your  *******");
+		System.out.println("******   power to repel them.  *******");
+		System.out.println("**************************************");
+		System.out.println("**************************************");
+		System.out.println("******  Exiting Communications *******");
+		System.out.println("**************************************");
 	}
 
 	public Player getPlayerOne() {
