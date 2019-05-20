@@ -80,14 +80,15 @@ public class ShipGame {
 					engageRound(totalHostiles, count, kb, playerChoice);
 				}
 			} 
-			playerChoice = playerChoiceSafe(kb);	
+			
+				
+			if (playerOne.getScore() == gameScore) {
+				printEndGameMessage();
+				gameOver = true;
+			}
 			
 		} while (playerChoice != 2);
 
-		if (playerOne.getScore() == gameScore) {
-			printEndGameMessage();
-			gameOver = true;
-		}
 	}
 
 	// Game turn system to be restored.
@@ -154,7 +155,6 @@ public class ShipGame {
 						System.out.println("**************");
 						totalHostiles = totalHostiles - 1;
 						count++;
-						hostileRoom.getActiveHostile()[i] = null;
 					} 
 					if(totalHostiles > 0) {
 						if (characterHit(.85, playerOne.getName())) {
