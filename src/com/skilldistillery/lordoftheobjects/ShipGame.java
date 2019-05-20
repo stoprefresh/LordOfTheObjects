@@ -223,16 +223,13 @@ public class ShipGame {
 		System.out.println("1.{Re-charge shields}");
 		System.out.println("2.{Exit}");
 		int choiceSelection = kb.nextInt();
+		
 		if (choiceSelection == 1) {
 			System.out.println("Recharging shields");
 			System.out.println("******************");
 			playerOne.setShieldStr(100);
 			System.out.println("******************");
-		} else {
-			playerChoiceSafe(kb);
-		}
-		System.out.println("__________________________________________");
-
+		} 
 		return choiceSelection;
 	}
 
