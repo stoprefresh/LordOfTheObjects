@@ -142,7 +142,7 @@ public class ShipGame {
 		int playerChoice = playerChoicePassed;
 		int i = 0 + count;
 
-		while (totalHostiles != 0) {
+		while (totalHostiles != 0 && playerChoice != 2) {
 
 			if (playerChoice == 1) {
 
@@ -153,7 +153,7 @@ public class ShipGame {
 					System.out.println("**************");
 					totalHostiles = totalHostiles - 1;
 					count++;
-					hostileRoom.getActiveHostile()[i] = null;
+//					hostileRoom.getActiveHostile()[i] = null;
 				}
 				if (totalHostiles > 0) {
 					if (characterHit(.85, playerOne.getName())) {
@@ -225,9 +225,8 @@ public class ShipGame {
 			System.out.println("******************");
 			playerOne.setShieldStr(100);
 			System.out.println("******************");
-		} else {
-			playerChoiceSafe(kb);
-		}
+		} 
+		
 		System.out.println("__________________________________________");
 
 		return choiceSelection;
