@@ -85,6 +85,7 @@ public class ShipGame {
 		if (playerOne.getScore() == gameScore) {
 			printEndGameMessage();
 			gameOver = true;
+			
 		}
 	}
 
