@@ -59,6 +59,10 @@ public class ShipGame {
 			hostileRoom.setIsSafe(true);
 		}
 		hostileRoom.setRoomIdent("Bay 1-A");
+		System.out.println();
+		System.out.println();
+		System.out.println();
+		System.out.println();
 		System.out.println(".........................................................");
 		System.out.println(".........................................................");
 		System.out.println("................You are now entering " + hostileRoom.getRoomIdent() + "..............");
@@ -73,19 +77,18 @@ public class ShipGame {
 		int playerChoice = 0;
 		int totalHostiles = hostileRoom.getActiveHostile().length;
 
-		while (playerChoice != 2) {
+		while (totalHostiles >= 0) {
 			if (hostileRoom.getIsSafe() == false) {
 				playerChoice = playerChoiceFight(totalHostiles, kb);
-				if (playerChoice == 1) {
+				if(playerOne.getScore() >= gameScore) {
+					printEndGameMessage();
+					gameOver = true;
+					break;
+				}
+				else if (playerChoice == 1) {
 					engageRound(totalHostiles, count, kb, playerChoice);
 				}
 			}
-			playerChoice = playerChoiceSafe(kb);
-		}
-		if (playerOne.getScore() == gameScore) {
-			printEndGameMessage();
-			gameOver = true;
-			
 		}
 	}
 
