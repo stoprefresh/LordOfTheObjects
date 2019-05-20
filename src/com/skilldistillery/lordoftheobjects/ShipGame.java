@@ -59,6 +59,10 @@ public class ShipGame {
 			hostileRoom.setIsSafe(true);
 		}
 		hostileRoom.setRoomIdent("Bay 1-A");
+		System.out.println();
+		System.out.println();
+		System.out.println();
+		System.out.println();
 		System.out.println(".........................................................");
 		System.out.println(".........................................................");
 		System.out.println("................You are now entering " + hostileRoom.getRoomIdent() + "..............");
