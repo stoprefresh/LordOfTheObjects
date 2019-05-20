@@ -21,12 +21,12 @@ public class ShipGame {
 	}
 
 	public void generateRoom(int difficulty) {
-		double randomDiff = Math.random() * 100;
+		int randomDiff = (int)(Math.random() * 100);
 
 		switch (difficulty) {
 
 		case 1:
-			gameScore = 4;
+			gameScore = 2;
 			if (randomDiff < 20) {
 				hostileRoom = new ShipRoomHostile(difficulty);
 				hostileRoom.setIsSafe(true);
@@ -36,7 +36,7 @@ public class ShipGame {
 			break;
 
 		case 2:
-			gameScore = 6;
+			gameScore = 3;
 			if (randomDiff < 15) {
 				hostileRoom = new ShipRoomHostile(difficulty);
 				hostileRoom.setIsSafe(true);
@@ -46,7 +46,7 @@ public class ShipGame {
 			break;
 
 		case 3:
-			gameScore = 8;
+			gameScore = 6;
 			if (randomDiff < 10) {
 				hostileRoom = new ShipRoomHostile(difficulty);
 				hostileRoom.setIsSafe(true);
@@ -67,22 +67,21 @@ public class ShipGame {
 	}
 
 	public void gameTurn(Scanner kb, int count) {
+		
 		generateRoom(getDifficutly());
-
+		
 		int playerChoice = 0;
 		int totalHostiles = hostileRoom.getActiveHostile().length;
 
 		do {
-			if (hostileRoom.getIsSafe() == false && totalHostiles != 0) {
+			if (hostileRoom.getIsSafe() == false) {
 				playerChoice = playerChoiceFight(totalHostiles, kb);
 				if (playerChoice == 1) {
-					engageRound(totalHostiles, count, playerChoice, kb);
+					engageRound(totalHostiles, count, kb, playerChoice);
 				}
-			} else if (hostileRoom.getIsSafe() == true) {
-				while (playerChoice != 1) {
-					playerChoice = playerChoiceSafe(kb);
-				}	
-			}
+			} 
+			playerChoice = playerChoiceSafe(kb);	
+			
 		} while (playerChoice != 2);
 
 		if (playerOne.getScore() == gameScore) {
@@ -138,13 +137,14 @@ public class ShipGame {
 //		}
 //
 //	}
-	public void engageRound(int totalHostiles, int count, int playerChoice, Scanner kb) {
-		int i = 0;
-
-		for (i = 0 + count; i < totalHostiles; i++) {
-			while (hostileRoom.getActiveHostile()[i] != null) {
+	public void engageRound(int totalHostiles, int count, Scanner kb, int playerChoicePassed) {
+		
+		int playerChoice = playerChoicePassed;
+		int i = 0 + count; 
+		  
+			while (totalHostiles != 0) {
 				
-
+				
 				if (playerChoice == 1) {
 
 					if (characterHit(playerOne.getHitChance(), hostileRoom.getActiveHostile()[i].getName())) {
@@ -155,37 +155,28 @@ public class ShipGame {
 						totalHostiles = totalHostiles - 1;
 						count++;
 						hostileRoom.getActiveHostile()[i] = null;
-						
 					} 
 					if(totalHostiles > 0) {
-						if (characterHit(.86, playerOne.getName())) {
+						if (characterHit(.85, playerOne.getName())) {
 							System.out.println();
 							System.out.println();
 							turnCount++;
-							if (playerOne.getShieldStr() <= 0) {
-								playerOne.setHealth(20);
-							} else {
-								playerOne.setShieldStr(playerOne.getShieldStr() - 20);
-							}
-						} else {
-							System.out.println();
-							System.out.println();
-							turnCount++;
-
 							if (playerOne.getShieldStr() <= 0) {
 								playerOne.setHealth(playerOne.getHealth() - 20);
 							} else {
 								playerOne.setShieldStr(playerOne.getShieldStr() - 20);
 							}
-						
+						} 
+						else {
+							System.out.println();
+							System.out.println();
 						}
-
 					}
+				}
 				playerChoice = playerChoiceFight(totalHostiles, kb);
-				} 
 			}
 		}
-	}
+	
 
 	public void printEndGameMessage() {
 		System.out.println(".........................................................");
