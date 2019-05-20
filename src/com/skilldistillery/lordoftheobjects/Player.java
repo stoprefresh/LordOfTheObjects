@@ -3,7 +3,7 @@ package com.skilldistillery.lordoftheobjects;
 public class Player extends Character {
 
 	private boolean shieldActive;
-	private double shieldStr;
+	private int shieldStr;
 	private int score;
 	private boolean win;
 	
@@ -21,10 +21,10 @@ public class Player extends Character {
 	
 	
 	
-	public double getShieldStr() {
+	public int getShieldStr() {
 		return shieldStr;
 	}
-	public void setShieldStr(double shieldStr) {
+	public void setShieldStr(int shieldStr) {
 		this.shieldStr = shieldStr;
 	}
 	public int getScore() {

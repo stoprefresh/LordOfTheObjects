@@ -9,8 +9,8 @@ public class HostileChar extends Character{
 	
 	public HostileChar(){
 		
-		setName("[Enemy:- Alien]");
-		enemyType = (int)Math.random() * 2;
+		setName("[Enemy:]");
+		enemyType = (int)(Math.random() * 2 + 1);
 		
 		switch(enemyType) {
 		
