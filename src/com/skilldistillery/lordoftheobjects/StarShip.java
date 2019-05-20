@@ -7,12 +7,22 @@ public class StarShip {
 	private int totalRooms;
 	private double integrity;
 	private boolean terminalAvail;
+	private String roomIdent;
 	
 	
 	
 	
 	
 	
+	
+	
+	
+	public String getRoomIdent() {
+		return roomIdent;
+	}
+	public void setRoomIdent(String roomIdent) {
+		this.roomIdent = roomIdent;
+	}
 	public int getExits() {
 		return exits;
 	}

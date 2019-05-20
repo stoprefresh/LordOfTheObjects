@@ -10,7 +10,7 @@ public class HostileChar extends Character{
 	public HostileChar(){
 		
 		setName("[Enemy:]");
-		enemyType = (int)Math.random() * 2;
+		enemyType = (int)(Math.random() * 2 + 1);
 		
 		switch(enemyType) {
 		
@@ -33,7 +33,7 @@ public class HostileChar extends Character{
 		enemyIdent = " - Humanoid";
 		setName(getName() + " Space Pirate" + enemyIdent);
 		setOutputDamage(50);
-		setHitChance(.95);
+		setHitChance(.1);
 		
 		
 	}
@@ -41,7 +41,7 @@ public class HostileChar extends Character{
 		enemyIdent = " - Alien";
 		setName(getName() + " Unkown" + enemyIdent);
 		setOutputDamage(65);
-		setHitChance(.95);
+		setHitChance(.1);
 		
 	}
 	
